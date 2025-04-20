@@ -2075,6 +2075,28 @@ input, select, textarea {
 		opacity: 1.0;
 	}
 
+/* Dark-mode form fields for booking pages */
+input[type="date"],
+input[type="number"]
+{
+    background-color: #2a2f4a;
+    color: #fff;
+    border: 1px solid #555;
+}
+input[type="date"]::placeholder,
+input[type="number"]::placeholder
+{
+    color: #aaa;
+}
+
+/* Search bar centering */
+.search-bar-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 2em 0;
+}
+
 /* Box */
 
 	.box {
@@ -2900,6 +2922,19 @@ input, select, textarea {
 				}
 
 		}
+
+/* First tile full width */
+.tiles.full-width article {
+    width: 100% !important;
+}
+/* Explore Tours tile color */
+.tiles.full-width .explore:before {
+    background-color: #6fc3df !important;
+}
+/* Contact Us tile color */
+.tiles.pair .contact:before {
+    background-color: #ec8d81 !important;
+}
 
 /* Contact Method */
 
