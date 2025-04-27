@@ -13,6 +13,12 @@ if not os.path.exists(DATA_FILE_PATH):
     with open(DATA_FILE_PATH, "w") as file:
         pass
 
+# Create the contact file if it doesn't exist
+CONTACT_FILE_PATH = os.path.join(DATA_FILE_DIR, "contact.txt")
+if not os.path.exists(CONTACT_FILE_PATH):
+    with open(CONTACT_FILE_PATH, "w") as file:
+        pass
+
 
 def check_exists(string, type_):
     """
@@ -68,3 +74,17 @@ def render_template(template_filename, context):
     for key, value in context.items():
         html = html.replace("{{" + key + "}}", value)
     return html
+
+
+def save_contact_form(name, email, message):
+    """
+    Save the contact form data to a file.
+    :param name: The name of the person who filled out the form.
+    :param email: The email of the person who filled out the form.
+    :param message: The message from the contact form.
+    """
+    message = message.replace("\n", " ")
+    message = message.replace(":", " ")
+    with open(CONTACT_FILE_PATH, "a") as file:
+        file.write(f"{name}:{email}:{message}\n")
+    return True
