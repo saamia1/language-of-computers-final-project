@@ -8,7 +8,7 @@ from utils import validate_credentials, render_template
 form = cgi.FieldStorage()
 
 # Output HTTP header
-print("Content-Type: text/html\n\n")
+print("Content-Type: text/html")
 
 # Validate form inputs
 if "username" not in form or "password" not in form:
@@ -16,6 +16,7 @@ if "username" not in form or "password" not in form:
         "error.html",
         {"message": "Missing form data", "link_url": "login.html", "link_text": "Go back"}
     )
+    print()  # blank line before HTML
     print(html)
     sys.exit()
 
@@ -29,8 +30,12 @@ if not validate_credentials(username, password):
         "error.html",
         {"message": "Invalid username or password", "link_url": "login.html", "link_text": "Go back"}
     )
+    print()  # blank line before HTML
     print(html)
 else:
+    # Set session cookie for logged-in user
+    print(f"Set-Cookie: username={username}; Path=/")
+    print()  # blank line before HTML
     html = render_template(
         "success.html",
         {"message": "Login successful", "link_url": "tours.html", "link_text": "View Tours"}

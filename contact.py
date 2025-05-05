@@ -26,16 +26,18 @@ def headHTML():
                                 <nav><a href="#menu">Menu</a></nav>
                         </header>
 
-                        <nav id="menu">
-                                <ul class="links">
-                                        <li><a href="index.html">Home</a></li>
-                                </ul>
-                                <ul class="actions stacked">
-                                        <li><a href="tours.html" class="button primary fit">Tours</a></li>
-                                        <li><a href="login.html" class="button fit">Log In</a></li>
-                                        <li><a href="signup.html" class="button fit">Sign Up</a></li>
-                                </ul>
-                        </nav>
+		<nav id="menu">
+			<ul class="links">
+				<li><a href="index.html">Home</a></li>
+			</ul>
+			<ul class="actions stacked">
+				<li><a href="tours.html" class="button fit">Tours</a></li>
+				<li><a href="booking.py" class="button fit">Booking Form</a></li>
+				<li><a href="login.html" class="button fit">Log In</a></li>
+				<li><a href="signup.html" class="button fit">Sign Up</a></li>
+				<li><a href="contact.html" class="button primary fit">Contact Us</a></li>
+			</ul>
+		</nav>
 
                 <hr>
 

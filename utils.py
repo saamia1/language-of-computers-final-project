@@ -96,9 +96,10 @@ def save_contact_form(name, email, message):
     return True
 
 
-def save_booking_form(date, quantity, location, notes):
+def save_booking_form(username, date, quantity, location, notes):
     """
     Save the booking form data to a file.
+    :param username: The user making the booking.
     :param date: The date of the tour.
     :param quantity: Number of spots booked.
     :param location: The tour location.
@@ -107,5 +108,18 @@ def save_booking_form(date, quantity, location, notes):
     notes = notes.replace("\n", " ")
     notes = notes.replace(":", " ")
     with open(BOOKING_FILE_PATH, "a") as file:
-        file.write(f"{date}:{quantity}:{location}:{notes}\n")
+        file.write(f"{username}:{date}:{quantity}:{location}:{notes}\n")
     return True
+
+
+def get_current_username():
+    """
+    Parse the HTTP_COOKIE environment variable and return the current username cookie, or None if not set.
+    """
+    import os
+    cookies = os.environ.get('HTTP_COOKIE', '')
+    for kv in cookies.split(';'):
+        parts = kv.strip().split('=', 1)
+        if len(parts) == 2 and parts[0] == USERNAME:
+            return parts[1]
+    return None
