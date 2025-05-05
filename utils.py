@@ -19,6 +19,12 @@ if not os.path.exists(CONTACT_FILE_PATH):
     with open(CONTACT_FILE_PATH, "w") as file:
         pass
 
+# Create the booking file if it doesn't exist
+BOOKING_FILE_PATH = os.path.join(DATA_FILE_DIR, "booking.txt")
+if not os.path.exists(BOOKING_FILE_PATH):
+    with open(BOOKING_FILE_PATH, "w") as file:
+        pass
+
 
 def check_exists(string, type_):
     """
@@ -87,4 +93,19 @@ def save_contact_form(name, email, message):
     message = message.replace(":", " ")
     with open(CONTACT_FILE_PATH, "a") as file:
         file.write(f"{name}:{email}:{message}\n")
+    return True
+
+
+def save_booking_form(date, quantity, location, notes):
+    """
+    Save the booking form data to a file.
+    :param date: The date of the tour.
+    :param quantity: Number of spots booked.
+    :param location: The tour location.
+    :param notes: Special requests or notes.
+    """
+    notes = notes.replace("\n", " ")
+    notes = notes.replace(":", " ")
+    with open(BOOKING_FILE_PATH, "a") as file:
+        file.write(f"{date}:{quantity}:{location}:{notes}\n")
     return True
